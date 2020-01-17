@@ -15,6 +15,19 @@ function App() {
   const [projects, setProjects] = useState([]);
   // const [data, setData] = useState([]);
 
+  const getProjects = props => {
+    axios
+      .get("api/projects")
+      // .then(res => res.json())
+      .then(projects => {
+        console.log(projects);
+        setProjects(projects.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     // fetch("http://127.0.0.1:5100/api/landing?name=tom")
     //   .then(res => res.json())
@@ -23,16 +36,7 @@ function App() {
     //     console.log("catch", err);
     //   });
 
-    axios
-      .get("http://127.0.0.1:5100/api/projects")
-      // .then(res => res.json())
-      .then(projects => {
-        // console.log(projects);
-        setProjects(projects.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    getProjects();
   }, []);
 
   // useEffect(() => {
@@ -55,7 +59,7 @@ function App() {
     event.preventDefault();
 
     axios
-      .post("http://127.0.0.1:5100/api/projects", newProject)
+      .post("api/projects", newProject)
       .then(data => {
         setFormInput({
           name: "",
@@ -63,6 +67,7 @@ function App() {
         });
         // console.log(data);
         // setProjects(projects);
+        getProjects();
       })
 
       .catch(err => alert("type in a name and description, " + err));
@@ -71,9 +76,9 @@ function App() {
     // event.preventDefault();
 
     axios
-      .delete(`http://127.0.0.1:5100/api/projects/${id}`)
+      .delete(`api/projects/${id}`)
       .then(data => {
-        alert(data);
+        // alert(data);
         console.log(data);
         setProjects(projects);
       })
