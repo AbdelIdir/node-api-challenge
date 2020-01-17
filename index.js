@@ -25,7 +25,7 @@ const port = process.env.PORT || 4100;
 
 const app = express();
 
-// app.use(express.static("client/build"));
+app.use(express.static("client/build"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
@@ -33,8 +33,8 @@ app.use(express.json());
 app.use("/api/projects", projectRouter);
 app.use("/api/actions", actionRouter);
 
-app.get("/api/greeting", (req, res) => {
-  res.json(`hello, ${req.query.name}! how are you?`);
+app.get("/api/landing", (req, res) => {
+  res.json(`hello, ${req.query.name}! welcome to my page`);
 });
 
 app.use((req, res) => {

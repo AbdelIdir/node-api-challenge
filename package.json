@@ -6,7 +6,7 @@
   "scripts": {
     "db:seed": "knex seed:run",
     "start": "node index.js",
-    "heroku-postbuild": "npm i && npm run build",
+    "heroku-postbuild": "cd client && npm i && npm run build",
     "server": "nodemon index.js"
   },
   "repository": {
