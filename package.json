@@ -7,7 +7,7 @@
     "db:seed": "knex seed:run",
     "start": "node index.js",
     "heroku-postbuild": "cd client && npm i && npm run build",
-    "server": "nodemon index.js"
+    "server": "node index.js"
   },
   "repository": {
     "type": "git",
