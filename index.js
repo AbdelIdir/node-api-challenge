@@ -12,7 +12,7 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
-// require("dotenv").config();
+require("dotenv").config();
 const projectRouter = require("./projects_router");
 const actionRouter = require("./actions_router");
 
