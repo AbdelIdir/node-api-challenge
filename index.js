@@ -21,7 +21,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 /* needs to be agreeable for both my computer ,and HEROKU */
-const port = process.env.PORT || 4200;
+const port = process.env.PORT || 4100;
 
 const app = express();
 
