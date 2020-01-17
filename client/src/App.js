@@ -33,16 +33,16 @@ function App() {
       .catch(err => {
         console.log(err);
       });
-  }, [projects]);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:5100/api/landing?name=tom")
-      .then(res => res.json())
-      .then(greeting => setGreeting(greeting), console.log(greeting))
-      .catch(err => {
-        console.log("catch", err);
-      });
   }, []);
+
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:5100/api/landing?name=tom")
+  //     .then(res => res.json())
+  //     .then(greeting => setGreeting(greeting), console.log(greeting))
+  //     .catch(err => {
+  //       console.log("catch", err);
+  //     });
+  // }, []);
 
   // fetch("http://127.0.0.1:5100/api/landing?name=tom")
   //   .then(res => res.json())
@@ -65,18 +65,20 @@ function App() {
         // setProjects(projects);
       })
 
-      .catch(err => console.log(err));
+      .catch(err => alert("type in a name and description, " + err));
   };
-  const DeleteUser = (event, id) => {
-    event.preventDefault();
+  const DeleteProject = id => {
+    // event.preventDefault();
 
     axios
       .delete(`http://127.0.0.1:5100/api/projects/${id}`)
       .then(data => {
+        alert(data);
         console.log(data);
+        setProjects(projects);
       })
 
-      .catch(err => err);
+      .catch(err => console.log(err));
   };
 
   return (
@@ -84,7 +86,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <p>hey {greeting}</p>
+        <p> {greeting}</p>
 
         <form onSubmit={event => onHandleSubmit(event, formInput)}>
           {/* <p>{formInput.name}</p>
@@ -131,7 +133,7 @@ function App() {
               </p>
               <p>Id: {proj.id}</p>
 
-              <button onClick={event => DeleteUser(event, proj.id)}>
+              <button onClick={() => DeleteProject(proj.id)}>
                 Delete this user
               </button>
             </div>
