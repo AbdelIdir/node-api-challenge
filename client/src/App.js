@@ -17,7 +17,7 @@ function App() {
 
   const getProjects = props => {
     axios
-      .get("api/projects")
+      .get("/api/projects")
       // .then(res => res.json())
       .then(projects => {
         console.log(projects);
@@ -59,7 +59,7 @@ function App() {
     event.preventDefault();
 
     axios
-      .post("api/projects", newProject)
+      .post("/api/projects", newProject)
       .then(data => {
         setFormInput({
           name: "",
@@ -76,7 +76,7 @@ function App() {
     // event.preventDefault();
 
     axios
-      .delete(`api/projects/${id}`)
+      .delete(`/api/projects/${id}`)
       .then(data => {
         // alert(data);
         console.log(data);
