@@ -80,7 +80,8 @@ function App() {
       .then(data => {
         // alert(data);
         console.log(data);
-        setProjects(projects);
+        // setProjects(projects);
+        getProjects();
       })
 
       .catch(err => console.log(err));
