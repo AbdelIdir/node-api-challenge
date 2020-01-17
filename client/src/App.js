@@ -7,7 +7,7 @@ function App() {
   const [greeting, setGreeting] = useState("");
 
   useEffect(() => {
-    fetch("/api/landing?name=coldude")
+    fetch("/api/landing?name=cooldude")
       .then(res => res.json())
       .then(greeting => setGreeting(greeting), console.log(greeting))
       .catch(err => {
